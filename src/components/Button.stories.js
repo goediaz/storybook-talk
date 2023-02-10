@@ -1,5 +1,7 @@
 import { Button } from './Button';
 import { action } from '@storybook/addon-actions';
+import { useContext } from 'react';
+import { ThemeContext } from '../../src/wrappers/ThemeProvider';
 
 export default {
   title: 'components/Button',
@@ -116,4 +118,17 @@ const AllTemplate = (args) => {
 export const AllButtons = AllTemplate.bind({});
 AllButtons.args = {
   label: 'Click Me!',
+}
+
+const ThemeSwitcherTemplate = (args) =>  {
+  const { toggleTheme } = useContext(ThemeContext);
+  return (
+    <Button {...args} onClick={toggleTheme} />
+  )
+
+}
+
+export const ThemeSwitcher = ThemeSwitcherTemplate.bind({});
+ThemeSwitcher.args = {
+  label: 'Click me to switch the theme!',
 }
