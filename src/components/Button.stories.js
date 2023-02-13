@@ -83,3 +83,32 @@ Danger.args = {
   variant: 'danger',
   label: 'Click me!'
 };
+
+const AllButtonsTemplate = (args) => {
+  const buttonStates = ['light', 'primary', 'secondary', 'success', 'warning', 'danger'];
+  const inlineStylesContainer = {
+    'flex-direction': 'column',
+    'display': 'flex',
+    'width': '200px'
+  };
+  const inlineStylesButton = {
+    'margin-bottom': '10px'
+  }
+
+  return (
+    <div style={inlineStylesContainer}>
+    {
+      buttonStates.map(state => 
+        <div style={inlineStylesButton}>
+          <Button {...args} variant={state} onClick={action(`Clicked ${state}`)}/>
+        </div>
+      )
+    }
+    </div>
+  )
+};
+
+export const AllButtons = AllButtonsTemplate.bind({});
+AllButtons.args = {
+  label: 'Click Me!',
+}
