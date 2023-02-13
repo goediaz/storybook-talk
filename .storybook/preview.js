@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { ThemeProvider } from '../src/providers/ThemeProvider';
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -9,3 +10,7 @@ export const parameters = {
     },
   },
 }
+
+const withThemeToggle = (Story) => <ThemeProvider><Story /></ThemeProvider>;
+
+export const decorators = [withThemeToggle];
